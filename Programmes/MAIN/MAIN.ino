@@ -1,4 +1,5 @@
 //Begin Librairies
+#include <WiFi.h>
 #include <LiquidCrystal_I2C.h>
 #include <Wire.h>
 #include <DHTesp.h>
@@ -8,6 +9,24 @@
 
 
 // Begin Declarations
+//begin of modification of ali ************************************************************
+
+
+
+
+const char* ssid     = "the ssid of your wifi";
+const char* password = "the password of your wifi";
+// Set web server port number to 80
+WiFiServer server(80);
+// Variable to store the HTTP request
+String header;
+
+
+
+//end modification of ali *****************************************************************
+
+
+
 LiquidCrystal_I2C lcd (0x3F, 16, 2);
 
 DHTesp dht;
@@ -27,6 +46,27 @@ SFE_BMP180 bmp180;
 
 
 void setup() {
+//begin of modification of ali ************************************************************
+Serial.begin(115200);
+
+// Connect to Wi-Fi network with SSID and password
+  Serial.print("Connecting to ");
+  Serial.println(ssid);
+  WiFi.begin(ssid, password);
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print(".");
+  }
+  // Print local IP address and start web server
+  Serial.println("");
+  Serial.println("WiFi connected.");
+  Serial.println("IP address: ");
+  Serial.println(WiFi.localIP());
+  server.begin();
+
+
+
+//end modification of ali *****************************************************************
 // Begin setup LCD
   lcd.begin ();
   lcd.clear (); 
@@ -60,6 +100,28 @@ void setup() {
 
 void loop() {
 
+//begin of modification of ali ************************************************************
+  WiFiClient client = server.available();   // Listen for incoming clients
+
+  if (client) {                             // If a new client connects,
+    Serial.println("New Client.");          // print a message out in the serial port
+    String currentLine = "";                // make a String to hold incoming data from the client
+    while (client.connected()) {            // loop while the client's connected
+      if (client.available()) {             // if there's bytes to read from the client,
+        char c = client.read();             // read a byte, then
+        Serial.write(c);                    // print it out the serial monitor
+        header += c;
+        if (c == '\n') {                    // if the byte is a newline character
+          // if the current line is blank, you got two newline characters in a row.
+          // that's the end of the client HTTP request, so send a response:
+          if (currentLine.length() == 0) {
+            // HTTP headers always start with a response code (e.g. HTTP/1.1 200 OK)
+            // and a content-type so the client knows what's coming, then a blank line:
+            client.println("HTTP/1.1 200 OK");
+            client.println("Content-type:text/html");
+            client.println("Connection: close");
+            client.println();
+//end modification of ali *****************************************************************
 
 
 // Begin loop DHT
@@ -187,4 +249,54 @@ void loop() {
     delay (2000);
 // End loop LCD
 
+//begin of modification of ali ************************************************************
+
+//html desplay-----------------------------------------------------------------------------------------
+
+client.println("<!DOCTYPE html>");
+client.println("<html lang="en">");
+client.println("<head><meta charset="UTF-8">");
+
+//css declaration***********************
+
+client.println("<style>");
+client.println(" body { text-align: center; font-family: \"Trebuchet MS\", Arial;}");
+client.println(" table { border-collapse: collapse; width:35%; margin-left:auto; margin-right:auto; }");
+client.println(" th { padding: 14px; background-color: #02ffff; color: rgb(0, 0, 0); }");
+client.println(" tr { border: 1px solid rgb(0, 0, 0); padding: 10px; }");
+client.println("  tr:hover { background-color: #000; color: aliceblue;}");
+client.println(" td { border: none; padding: 12px; }</style>");
+
+// html body and title******************
+
+client.println("<title>HTML page of web server</title></head>");
+client.println("<body><h1>arduino weather station wemos D1 </h1>");
+client.println("<table><tr><th>MEASUREMENT</th><th>VALUE</th></tr>");
+client.println("<tr><td>whater lavel</td><td>--- %</td></tr>");
+client.println("<tr><td>Temp. Celsius</td><td>--- *C</td></tr>");
+client.println("<tr><td>Temp. Fahrenheit</td><td>--- *F</td></tr>");
+client.println("<tr><td>Pressure</td><td>--- hPa</td></tr>");
+client.println("<tr><td>Humidity</td><td>--- %</td></tr></table>");
+client.println("</body></html>");
+
+// The HTTP response ends with another blank line
+            client.println();
+            // Break out of the while loop
+            break;
+          } else { // if you got a newline, then clear currentLine
+            currentLine = "";
+          }
+        } else if (c != '\r') {  // if you got anything else but a carriage return character,
+          currentLine += c;      // add it to the end of the currentLine
+        }
+      }
+    }
+    // Clear the header variable
+    header = "";
+    // Close the connection
+    client.stop();
+    Serial.println("Client disconnected.");
+    Serial.println("");
+  }
+//end modification of ali *****************************************************************
 }
