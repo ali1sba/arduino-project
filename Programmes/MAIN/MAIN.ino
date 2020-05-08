@@ -38,6 +38,7 @@ String ws = "";
 SFE_BMP180 bmp180;
 //End Declarations
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////
 
 void setup() {
 //begin of modification of ali ************************************************************
@@ -68,18 +69,26 @@ delay (10);
 
 
 //end modification of ali *****************************************************************
+
+
 // Begin setup LCD
   lcd.begin ();
   lcd.clear (); 
 // End setup LCD
+
+
 // Begin setup DHT
   Serial.begin(115200);
   dht.setup(D8, DHTesp::DHT11);
 // End setup DHT
+
+
 // Begin setup WS
   pinMode(led,OUTPUT);
   pinMode(wspin,INPUT);
 // End setup WS
+
+
 // Begin setup BMP180
   bool success = bmp180.begin();
   if (success) {
@@ -88,17 +97,19 @@ delay (10);
 // End setup BMP180
 }
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+
 void loop() {
 
-
 // Begin loop DHT
-  
   Serial.print("{\"humidity\": ");
   Serial.print(dht.getHumidity());
   Serial.print(", \"temp\": ");
   Serial.print(dht.getTemperature());
   Serial.print("}\n");
 // End loop DHT
+
+
 // Begin loop WS
   int wsvalue = analogRead(wspin); 
   if (wsvalue <= 480){ 
@@ -142,6 +153,9 @@ void loop() {
   ws =  "FULL";
   }
 // End loop WS
+
+
+
 // Begin loop BMP180
   
   char status;
@@ -243,11 +257,11 @@ client.println(" td { border: none; padding: 12px; }</style>");
 client.println("<title>HTML page of web server</title></head>");
 client.println("<body><h1>arduino weather station wemos D1 </h1>");
 client.println("<table><tr><th>MEASUREMENT</th><th>VALUE</th></tr>");
-client.println("<tr><td>water lavel</td><td>--- %</td></tr>");
-client.println("<tr><td>Temp. Celsius</td><td>--- *C</td></tr>");
-client.println("<tr><td>Temp. Fahrenheit</td><td>--- *F</td></tr>");
-client.println("<tr><td>Pressure</td><td>--- hPa</td></tr>");
-client.println("<tr><td>Humidity</td><td>--- %</td></tr></table>");
+client.println("<tr><td>water lavel</td><td>"+ ws +"%</td></tr>");
+client.println("<tr><td>Temp. Celsius</td><td>"+ String(dht.getTemperature()) +" C</td></tr>");
+client.println("<tr><td>Temp. Fahrenheit</td><td>"+ String((((dht.getTemperature())*(9/5))+32)) +" F</td></tr>");
+client.println("<tr><td>Pressure</td><td>"+ String(P) +"hPa</td></tr>");
+client.println("<tr><td>Humidity</td><td>"+ String(dht.getHumidity()) +"%</td></tr></table>");
 client.println("</body></html>");
 
 // The HTTP response ends with another blank line
