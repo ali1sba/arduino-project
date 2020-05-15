@@ -1,7 +1,15 @@
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                 //
+//  PS : La température est prise du DHT11 et non pas du BMP180 (moins de précision pour le DHT11) //
+//  à la fin de la réalisation du projet switch temp form DHT11 to BMP180                          //
+//                                                                                                 //
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
 //Begin Librairies
-//#include <WiFi.h>
 #include <ESP8266WiFi.h>
-#include <ESP8266mDNS.h>
 #include <WiFiUdp.h>
 #include <LiquidCrystal_I2C.h>
 #include <Wire.h>
@@ -9,13 +17,11 @@
 #include <SFE_BMP180.h>
 //End Librairies
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // Begin Declarations
-//begin of modification of ali ************************************************************
 
-
-
-
+//Web-server
 const char* ssid     = "D-Link";
 const char* password = "30061969";
 // Set web server port number to 80
@@ -23,29 +29,32 @@ WiFiServer server(80);
 // Variable to store the HTTP request
 String header;
 
-
-
-//end modification of ali *****************************************************************
-
-
-
+//LCD
 LiquidCrystal_I2C lcd (0x3F, 16, 2);
 
+//DHT
 DHTesp dht;
-#define wspin A0
-#define led 2
-String ws = "";
+
+//Water Sensor
+const int wspin = A0;
+int wsvalue;
+const char* ws;
+
+//BMP180
 SFE_BMP180 bmp180;
+
+
+double ptr;
 //End Declarations
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 void setup() {
 //begin of modification of ali ************************************************************
-Serial.begin(115200);
-delay (10);
+  Serial.begin(115200);
+  delay (10);
 
-// Connect to Wi-Fi network with SSID and password
+  // Connect to Wi-Fi network with SSID and password
   Serial.println();
   Serial.println();
   Serial.print("Connecting to ");
@@ -64,10 +73,6 @@ delay (10);
   Serial.println("Server started");
   Serial.println("IP address: ");
   Serial.println(WiFi.localIP());
-  //server.begin();
-
-
-
 //end modification of ali *****************************************************************
 
 
@@ -83,21 +88,20 @@ delay (10);
 // End setup DHT
 
 
-// Begin setup WS
-  pinMode(led,OUTPUT);
-  pinMode(wspin,INPUT);
-// End setup WS
-
-
 // Begin setup BMP180
   bool success = bmp180.begin();
   if (success) {
     Serial.println("BMP180 init success");
   }
 // End setup BMP180
+/*
+// Begin setup LDR
+  pinMode (ldrPin, INPUT);
+// END setup LDR
+*/
 }
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 void loop() {
 
@@ -111,69 +115,79 @@ void loop() {
 
 
 // Begin loop WS
-  int wsvalue = analogRead(wspin); 
-  if (wsvalue <= 480){ 
+  wsvalue = analogRead(wspin);
+  if (wsvalue<=480){ 
     Serial.println("Water level: 0mm - Empty!");
-    ws =  "Empty";
+    Serial.println(String(wsvalue));
+    ws = "0mm - Empty!"; 
   }
   else if (wsvalue>480 && wsvalue<=530){ 
-    Serial.println("Water level: 0mm to 5mm"); 
-    ws =  "0-5mm";
+    Serial.println("Water level: 0mm to 5mm");
+    Serial.println(String(wsvalue));
+    ws = "0-5mm"; 
   }
   else if (wsvalue>530 && wsvalue<=615){ 
     Serial.println("Water level: 5mm to 10mm");
-    ws =  "5-10mm"; 
+    Serial.println(String(wsvalue));
+    ws = "5-10mm"; 
   }
   else if (wsvalue>615 && wsvalue<=660){ 
     Serial.println("Water level: 10mm to 15mm");
-    ws =  "10-15mm"; 
+    Serial.println(String(wsvalue));
+    ws = "10-15mm"; 
   } 
   else if (wsvalue>660 && wsvalue<=680){ 
     Serial.println("Water level: 15mm to 20mm");
-    ws =  "15-20mm"; 
+    Serial.println(String(wsvalue));
+    ws = "15-20mm"; 
   }
   else if (wsvalue>680 && wsvalue<=690){ 
     Serial.println("Water level: 20mm to 25mm");
-    ws =  "20-25mm"; 
+    Serial.println(String(wsvalue));
+    ws = "20-25mm"; 
   }
   else if (wsvalue>690 && wsvalue<=700){ 
     Serial.println("Water level: 25mm to 30mm");
-    ws =  "25-30mm"; 
+    Serial.println(String(wsvalue));
+    ws = "25-30mm"; 
   }
   else if (wsvalue>700 && wsvalue<=705){ 
     Serial.println("Water level: 30mm to 35mm");
-    ws =  "30-35mm"; 
+    Serial.println(String(wsvalue));
+    ws = "30-35mm"; 
   }
-  else if (wsvalue>705 && wsvalue<=710){ 
+  else if (wsvalue>705){ 
     Serial.println("Water level: 35mm to 40mm");
-    ws =  "35-40mm";
-  } 
-  else if (wsvalue> 710) {
-  Serial.println ("Water level: FULL");
-  ws =  "FULL";
+    Serial.println(String(wsvalue));
+    ws = "35-40mm"; 
   }
+
 // End loop WS
 
 
-
 // Begin loop BMP180
-  
   char status;
   double T, P;
   bool success = false;
+
   status = bmp180.startTemperature();
+
   if (status != 0) {
     delay(1000);
     status = bmp180.getTemperature(T);
+
     if (status != 0) {
       status = bmp180.startPressure(3);
+
       if (status != 0) {
         delay(status);
         status = bmp180.getPressure(P, T);
+
         if (status != 0) {
           Serial.print("Pressure: ");
           Serial.print(P);
           Serial.println(" hPa");
+
           Serial.print("Temperature: ");
           Serial.print(T);
           Serial.println(" C");
@@ -182,6 +196,25 @@ void loop() {
     }
   }
 // End loop BMP180
+
+
+
+
+// Begin Point de rosée
+   double Tr = (pow((dht.getHumidity()/100),0.125))*(112+(0.9*dht.getTemperature()))+(0.1*dht.getTemperature())-112;
+   Serial.println ("Point de rosee : ");
+   Serial.println (String(Tr));
+// End Point de rosée
+
+
+/*
+// Begin loop LDR
+  ldr_Val = analogRead (ldrPin);
+  Serial.println (ldr_Val);
+// End loop LDR
+*/
+
+
 // Begin loop LCD
     lcd.clear();
     lcd.setCursor (0,0);
@@ -205,8 +238,14 @@ void loop() {
     lcd.clear();
     lcd.setCursor (0,0);
     lcd.print ("WATER LEVEL : ");
+    lcd.setCursor (2,1);
+    lcd.print (" "+ String(ws) +" ");  
+    delay (2000);
+    lcd.clear();
+    lcd.setCursor (0,0);
+    lcd.print ("Point de rosee : ");
     lcd.setCursor (4,1);
-    lcd.print (ws);  
+    lcd.print (" "+ String(Tr) +" ");  
     delay (2000);
 // End loop LCD
 
@@ -238,10 +277,9 @@ void loop() {
 //html desplay-----------------------------------------------------------------------------------------
 
 client.println("<!DOCTYPE html>");
-/*
-client.println("<html lang="en">");
-client.println("<head><meta charset="UTF-8">");
-*/
+client.println("<html lang=""en"">");
+client.println("<head><meta charset=""UTF-8"">");
+
 //css declaration***********************
 
 client.println("<style>");
@@ -257,12 +295,14 @@ client.println(" td { border: none; padding: 12px; }</style>");
 client.println("<title>HTML page of web server</title></head>");
 client.println("<body><h1>arduino weather station wemos D1 </h1>");
 client.println("<table><tr><th>MEASUREMENT</th><th>VALUE</th></tr>");
-client.println("<tr><td>water lavel</td><td>"+ ws +"%</td></tr>");
+client.println("<tr><td>Water Level</td><td>"+ String(ws) +"</td></tr>");
 client.println("<tr><td>Temp. Celsius</td><td>"+ String(dht.getTemperature()) +" C</td></tr>");
 client.println("<tr><td>Temp. Fahrenheit</td><td>"+ String((((dht.getTemperature())*(9/5))+32)) +" F</td></tr>");
 client.println("<tr><td>Pressure</td><td>"+ String(P) +"hPa</td></tr>");
-client.println("<tr><td>Humidity</td><td>"+ String(dht.getHumidity()) +"%</td></tr></table>");
+client.println("<tr><td>Humidity</td><td>"+ String(dht.getHumidity()) +"%</td></tr>");
+client.println("<tr><td>Point de rosée</td><td>"+ String(Tr) +"</td></tr></table>");
 client.println("</body></html>");
+
 
 // The HTTP response ends with another blank line
             client.println();
