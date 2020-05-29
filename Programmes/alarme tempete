@@ -1,0 +1,134 @@
+#include <Adafruit_BMP085.h>
+
+
+#include <Wire.h>
+
+#include <Adafruit_BMP085.h>
+
+// Connect VCC of the BMP sensor to 3.3V (pas 5.0V!)
+// Connect GND to Ground
+
+Adafruit_BMP085 bmp;
+
+void setup() {
+
+
+  Serial.begin(9600);
+
+/*  if (!bmp.begin()) {
+
+    Serial.println("Could not find a valid BMP085 sensor, check wiring!");
+
+    while (1) {}
+
+  }*/
+
+ pinMode(6, OUTPUT);// LED ROUGE qui indique une tendance à la baisse
+
+ digitalWrite(6, LOW);
+
+ pinMode(7, OUTPUT); // LED VERTE qui indique une tendance à la hausse
+
+ digitalWrite(7, HIGH);
+
+ pinMode(10, OUTPUT); // BUZZER ALARME tempete
+
+ digitalWrite(10, LOW);
+
+} 
+
+void loop() {  
+
+      float x = (bmp.readPressure()); // donne une pression brute sans correction d'altitude
+
+     float pression = (( x + 10100)/100); // MOI JE DOIS RAJOUTER 10100 POUR RAMENER MA PRESSION AU NIVEAU DE LA MER car je suis à 550 m d'altitude
+
+     
+   
+
+    delay(2000);
+
+const float ref=(pression); // cette valeur ref me servira ensuite pour test d'alarme
+
+Serial.print("reference = ");
+
+Serial.println(ref);
+
+
+for (byte b=0; b <= 29; b++) // boucle de 30 mesures pour ensuite test alarme à issue des 30 mesures    1 mesure par minute
+
+{
+
+   float z = (bmp.readPressure());
+
+float mesure =(( z + 10100 ) / 100 ); // MOI JE DOIS RAJOUTER 10100 POUR RAMENER MA PRESSION AU NIVEAU DE LA MER car je suis à 101 m d'altitude
+
+
+
+
+      delay(60000); // pour avoir une mesure de pression par minute
+
+}
+
+ float z = (bmp.readPressure());
+
+float mesure =(( z + 10100 ) / 100 ); // mesure de pression qui va etre comparee à celle de reference pour test alarme toujours en rajoutant pour moi 6200
+
+Serial.print("reference etait ");
+
+Serial.println(ref);
+
+Serial.print("mesure pour test alerte  ");
+
+Serial.println(mesure );
+
+
+if ( mesure > ref ) // pour piloter leds en fonction tendance pression à la hausse ou baisse
+
+    {
+
+      digitalWrite(6, LOW);
+
+      digitalWrite(7, HIGH);  
+
+    }
+
+else
+
+{
+
+  digitalWrite(6, HIGH);
+
+  digitalWrite(7, LOW);
+
+}       
+
+
+  if (( mesure < 1010 ) && ( ref- mesure ) >= 1 ) // 2 tests pour activer alarme tempete  on peut changer les 2 valeurs de seuil d'alarme que j'ai fixe inférieur a 1010 en pression et a au moins plus 2 en variation en 30mn  *** si alarme sonne trop facilement mettre 3 ou 4
+
+  {
+
+
+    for (byte a=0; a <= 20; a++) // boucle de sonnerie buzzer
+
+    {
+
+     digitalWrite(10, HIGH);
+
+     digitalWrite(6, HIGH);
+
+     delay(500); 
+
+     digitalWrite(10, LOW);
+
+     digitalWrite(6, LOW);
+
+     delay(500);
+
+    }
+
+    digitalWrite(6, HIGH);
+
+  }
+
+}
