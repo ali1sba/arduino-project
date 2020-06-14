@@ -1,0 +1,153 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="utf-8"/>
+ <title>Esi Weather</title>
+<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">	
+<link href="https://fonts.googleapis.com/css?family=Bitter" rel="stylesheet">
+ <link rel="stylesheet" href="change.css" />
+<link rel="shortcut icon"  href="clouds.png">
+        <script src="https://kit.fontawesome.com/d7c9c3d618.js" crossorigin="anonymous"></script>
+        <link  href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet" >
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+          <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" >    
+</head>
+
+<body>
+<section class="intro">
+	   <div class="navbar"> 
+         <div class="logo"><div><img src="1.0.png" width="130px" height="64px"></div><a> Esi Weather</a></div>
+         <ul class="nav1">
+         <li><a href="#forcast">Forcast</a></li>
+         <li><a href="graph.html">Graphs</a></li>
+         <li><a href="login.html">Log In</a></li> 
+         </ul> 
+    </div> 
+   <div id="basic">         
+	<div class="condition-bar">
+		<div  class="cond-img"><a href="#"><img  src="sun.png" width="120px" height="120px" ></a></div>
+		<div class="temp"><a href="#">19&#730;</a></div> 
+    <div class="block1">	
+		   <div class="chor"><a href="#"><i class="fas fa-cloud-showers-heavy"></i> 100 &#37;</a></div>
+       <div class="humid"><a href="#"><i class="fa fa-tint" aria-hidden="true"></i> 40 &#37;</a></div></div>
+		<div class="block2">
+		<div class="press"><a href="#"><i class="fa fa-tachometer" aria-hidden="true"></i> 1012 hPa</a> </div>
+		<div class="wind"><a href="#"><i class="fas fa-wind"></i> 30 km/h</a> </div></div> 
+  </div>
+  <div class="times">
+    <div class="date"><a href="#"><i class="fa fa-calendar" aria-hidden="true"></i> june 6th</a></div>
+    <div class="time"><a href="#"><i class="fa fa-clock-o" aria-hidden="true"></i> 07:30 PM</a></div>
+    <div class="sunrise"><a href="#"><img src="sunrise.png" height="30px"
+      width="30px"> 04:32 AM</a></div> 
+    <div class="sunset"><a href="#"><img src="sunset.png"height="30px"
+      width="30px"> 08:16 PM</a></div>
+  </div></div>
+  <a name="forcast"></a>
+    <br><br>
+   <div class="container" id="cards">
+                   <div class="card"> 
+                  <div class="face face1">
+                    <div class="content">
+                      <i class="fa fa-thermometer-quarter"aria-hidden="true" ></i>
+                      <h3>temperature</h3></div>
+                  </div>
+                  <div class="face face2">
+                    <div class="content">  
+                     <a href="graph.html"> View Graph</a>
+                    </div>
+                  </div>
+                </div>
+                <script src="chart2.js"></script>
+                <div class="card"> 
+                  <div class="face face1">
+                    <div class="content">
+                    <i class="fas fa-tint"aria-hidden="true"></i>
+                      <h3>humidity</h3>
+                    </div>
+                  </div>
+                  <div class="face face2">
+                    <div class="content">
+                     <a href="graph.html"> View Graph</a>
+                    </div>
+                  </div>
+                </div>
+                  <div class="card"> 
+                  <div class="face face1">
+                    <div class="content">
+                      <i class="fas fa-sun-o"></i>
+                      <h3>condition</h3>
+                    </div>
+                  </div>
+                  <div class="face face2">
+                    <div class="content">
+                     <a href="graph.html"> View Graph</a>
+                    </div>
+                  </div>
+                </div>
+            <div class="card"> 
+                  <div class="face face1">
+                    <div class="content">
+                      <i class="fas fa-wind"></i>
+                      <h3>Wind</h3>
+                    </div>
+                  </div>
+                  <div class="face face2">
+                    <div class="content">
+                       <figure class="gauge"><div class="containerA"></div></figure>
+                     <a href="graph.html"> View Graph</a>
+                    </div>
+                  </div>
+                </div>
+                <script src="chart2.js"></script>
+                <div class="card"> 
+                  <div class="face face1">
+                    <div class="content">
+                      <i class="fas fa-cloud-showers-heavy"></i>
+                      <h3>Rain</h3>
+                    </div>
+                  </div>
+                  <div class="face face2">
+                    <div class="content">
+                     <a href="graph.html"> View Graph</a>
+                    </div>
+                  </div>
+                </div>
+              <div class="card"> 
+                  <div class="face face1">
+                    <div class="content">
+                      <i class="fa fa-tachometer" aria-hidden="true"></i>
+                      <h3>Pressure</h3>
+                    </div>
+                  </div>
+                  <div class="face face2">
+                    <div class="content">
+                     <a href="graph.html"> View Graph</a>
+                    </div>
+                  </div>
+                </div>
+                <span class="stretch"></span>
+           </div>   
+    <br><br>  
+    <div class="contact">
+       <div class="comment">
+        <h2>Leave us a comment:</h2>
+          <form>
+             <textarea ></textarea>
+               <div class="btn">
+              <input type="submit" value="SUBMIT">
+              </div>
+          </form>
+         </div> 
+          <div class="social"><h2>Contact Us:</h2>
+            <div class="fb"><a href="#" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Esi Weather</a></div>
+            <div class="tw"><a href="#"target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i>&nbsp;@Esi_weather</a></div><div class="ig"><a href="#"target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i>&nbsp; @Esi_weather</a></div>
+           <div class="gg"><a href="#"target="_blank"><i class="far fa-envelope"></i> &nbsp;E.weather@gmail.com</a></div></div>
+    </div>
+    <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+    <script src="topbutton.js"></script>
+    
+ </section>    
+</body>
+</html>
