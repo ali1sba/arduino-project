@@ -277,22 +277,67 @@ nav ul li a {
     background: rgba(255, 255, 255, 0.151);
 }
 
-.front h3 {
-    font-size: 30px;
-    transform: translateZ(100px);
+.front h3{
+	font-size: 30px;
+	transform: translateZ(100px);
     color: #fff;
+    backface-visibility: hidden;
+
+}
+.front i{
+	font-size: 60px;
+	transform: translateZ(100px);
+	color: #fff;
+	backface-visibility: hidden;
+}
+.back{
+	transform: rotateY(.5turn);
+	display: block;
+	justify-content: center;
+	align-items: center;
+	background: rgba(255,255,255,.1);
+
+	
 }
 
-.front i {
-    font-size: 60px;
-    transform: translateZ(100px);
+  .back .realinfo{
+	transform: translateZ(100px);
     color: #fff;
-}
-
-.back {
-    transform: rotateY(.5turn);
-    background: #fff;
-}
+    display: block;
+    font-size:40px;
+    justify-content: space-between;
+    font-weight: bold;
+    backface-visibility: hidden;
+    text-align: center;
+   
+ }
+   .back .realinfo1{
+	transform: translateZ(100px);
+    color: #fff;
+    display: flex;
+    font-size:35px;
+    justify-content: space-between;
+    font-weight: bold;
+    backface-visibility: hidden;
+    text-align: center;
+   
+ }
+                                  /*viewgraph flip card button*/
+.viewgraph{
+  display: inline-block;
+  text-decoration: none;
+  font-weight: 800;
+  text-align: center;
+  color:white;
+  font-size: 1em;
+  width: 130px;
+  height: 30px;
+  padding: 5px;
+  border: 1px solid white;
+  border-radius: 3px;
+  transform: translateZ(100px);
+  backface-visibility: hidden;
+} 
 
 
 /*comment and footer section  */
