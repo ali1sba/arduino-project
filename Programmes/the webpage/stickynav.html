@@ -25,311 +25,310 @@
 <body>
     <div class="wrapper">
         <header>
-          <nav>
-            <input type="checkbox" id="check">
+            <nav>
+                <input type="checkbox" id="check">
 
-              <div class="sidebar">
-                <div class="container2">
-              <div class="leftbox">
-                  <a onclick="tabs(0)" id="profile" class="sidee"><i class="fa fa-user"></i></a>
-                  <a onclick="tabs(1)" id="payment" class="sidee"><i class="fa fa-cog"></i></a>
+                <div class="sidebar">
+                    <div class="container2">
+                        <div class="leftbox">
+                            <a onclick="tabs(0)" id="profile" class="sidee"><i class="fa fa-user"></i></a>
+                            <a onclick="tabs(1)" id="payment" class="sidee"><i class="fa fa-cog"></i></a>
 
-              </div>
-              <div class="rightbox">
-                <div class="profile tabShow">
-                  <h1>Personal Info </h1>
-                  <h2>Full Name</h2>
-                  <input type="text" class="input" value="USER NAME">
-                  <h2>Birthday</h2>
+                        </div>
+                        <div class="rightbox">
+                            <div class="profile tabShow">
+                                <h1>Personal Info </h1>
+                                <h2>Full Name</h2>
+                                <input type="text" class="input" value="USER NAME">
+                                <h2>Birthday</h2>
 
-                  <input type="text" value="xxx/xx/xxxx" class="input">
-                  <h2>Gender</h2>
-                  <input type="text" class="input" value="Gender">
-                  <h2>Email</h2>
-                  <input type="text" class="input" value="example@example.com">
-                  <h2>Password </h2>
-                  <input type="password" class="input" value="brightcode">
-                  <button class="btn-update btn">Update</button>
+                                <input type="text" value="xxx/xx/xxxx" class="input">
+                                <h2>Gender</h2>
+                                <input type="text" class="input" value="Gender">
+                                <h2>Email</h2>
+                                <input type="text" class="input" value="example@example.com">
+                                <h2>Password </h2>
+                                <input type="password" class="input" value="brightcode">
+                                <button class="btn-update btn">Update</button>
+                            </div>
+
+                            <div class="settings tabShow">
+                                <h1>Account Settings</h1>
+                                <h2>Sync Watchlist to My Stuff</h2>
+                                <p></p>
+                                <h2>Hold Your Subscription</h2>
+                                <p></p>
+                                <h2>Cancel Your Subscription </h2>
+                                <p></p>
+                                <h2>Your Devices </h2>
+                                <p></p>
+                                <h2>Referrals</h2>
+                                <p></p>
+                                <button class="btn-update btn">Update</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-
-                <div class="settings tabShow">
-                  <h1>Account Settings</h1>
-                  <h2>Sync Watchlist to My Stuff</h2>
-                  <p></p>
-                  <h2>Hold Your Subscription</h2>
-                  <p></p>
-                  <h2>Cancel Your Subscription </h2>
-                  <p></p>
-                  <h2>Your Devices </h2>
-                  <p></p>
-                  <h2>Referrals</h2>
-                  <p></p>
-                  <button class="btn-update btn">Update</button>
+                <div class="menu-icon">
+                    <i class="fa fa-bars fa-2x"></i>
                 </div>
-              </div>
-              </div>
-              </div>
-            <div class="menu-icon">
-                   <i class="fa fa-bars fa-2x"></i>
-            </div>
-            <div class="logo">
-                logo
-            </div>
-            <div class="menu">
-              <ul>
-                <li>
-                  <label for="check">
+                <div class="logo">
+                    <img alt="logo" src="logo1.png" id="logoimg">
+                </div>
+                <div class="menu">
+                    <ul>
+                        <li>
+                            <label for="check">
                           <i class="fas fa-user-circle" id="sidebar_btn" onclick="toggle()"></i>
                       </label>
-                <li><a href="#">Sign In</a></li>
-                <li><a href="#graph">Graphs</a></li>
-                <li><a href="#forcast">Forcasts</a></li>
-              </ul>
-            </div>
-          </nav>
+                            <li><a href="#">Sign In</a></li>
+                            <li><a href="#graph">Graphs</a></li>
+                            <li><a href="#forcast">Forcasts</a></li>
+                    </ul>
+                </div>
+            </nav>
         </header>
     </div>
     <div class="sec" id="blur">
-    <!-- this is base :condition-bar + times bar -->
-    <div class="base">
-        <div class="condition-bar">
-            <div class="cb1">
-                <div class="cond-img">
-                    <a><img src="sun.png" width="120px" height="120px"></a>
+        <!-- this is base :condition-bar + times bar -->
+        <div class="base">
+            <div class="condition-bar">
+                <div class="cb1">
+                    <div class="cond-img">
+                        <a><img src="sun.png" width="120px" height="120px"></a>
+                    </div>
+                    <div class="temp"><a>29&#730;</a></div>
                 </div>
-                <div class="temp"><a>29&#730;</a></div>
+                <div class="cb2">
+                    <div class="block1">
+                        <div class="chor"><a><i class="fas fa-cloud-showers-heavy"></i> 100 &#37;</a></div>
+                        <div class="humid"><a><i class="fa fa-tint" aria-hidden="true"></i> 100 &#37;</a></div>
+                    </div>
+                    <div class="block2">
+                        <div class="press"><a><i class="fa fa-tachometer" aria-hidden="true"></i> 1012 hPa</a> </div>
+                        <div class="wind"><a><i class="fas fa-wind"></i> 30 km/h</a> </div>
+                    </div>
+                </div>
             </div>
-            <div class="cb2">
-                <div class="block1">
-                    <div class="chor"><a><i class="fas fa-cloud-showers-heavy"></i> 100 &#37;</a></div>
-                    <div class="humid"><a><i class="fa fa-tint" aria-hidden="true"></i> 100 &#37;</a></div>
+
+            <div class="times">
+                <div class="date"><a><i class="fa fa-calendar" aria-hidden="true"></i> june 6th</a></div>
+                <div class="time"><a><i class="fa fa-clock-o" aria-hidden="true"></i> 07:30 PM</a></div>
+                <div class="sunrise">
+                    <a><img src="sunrise.png" height="30px" width="30px"> 04:32 AM</a>
                 </div>
-                <div class="block2">
-                    <div class="press"><a><i class="fa fa-tachometer" aria-hidden="true"></i> 1012 hPa</a> </div>
-                    <div class="wind"><a><i class="fas fa-wind"></i> 30 km/h</a> </div>
+                <div class="sunset">
+                    <a><img src="sunset.png" height="30px" width="30px"> 08:16 PM</a>
+
                 </div>
+                <a name="forcast"></a>
             </div>
+
         </div>
 
-        <div class="times">
-            <div class="date"><a><i class="fa fa-calendar" aria-hidden="true"></i> june 6th</a></div>
-            <div class="time"><a><i class="fa fa-clock-o" aria-hidden="true"></i> 07:30 PM</a></div>
-            <div class="sunrise">
-                <a><img src="sunrise.png" height="30px" width="30px"> 04:32 AM</a>
-            </div>
-            <div class="sunset">
-                <a><img src="sunset.png" height="30px" width="30px"> 08:16 PM</a>
+        <!--  this is beggining of 2 card sets -->
 
-            </div>
-            <a name="forcast"></a>
-        </div>
-
-    </div>
-
-    <!--  this is beggining of 2 card sets -->
-
-    <div id="sub" class="animated animate__pulse delay-2s">
-        >>&nbsp; &nbsp; SENSORS ' VALUES&nbsp;&nbsp;
-        << </div>
-            <div class="container-card">
-                <div class="card">
-                    <div class="card-content">
-                        <div class="front"><i class="fa fa-thermometer-quarter" aria-hidden="true"></i>
-                            <h3>Temp</h3>
-                        </div>
-                        <div class="back">informations</div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-content">
-                        <div class="front"><i class="fas fa-tint" aria-hidden="true"></i>
-                            <h3>Humidity</h3>
-                        </div>
-                        <div class="back">
-                            <p>informations</p>
+        <div id="sub" class="animated animate__pulse delay-2s">
+            >>&nbsp; &nbsp; SENSORS ' VALUES&nbsp;&nbsp;
+            << </div>
+                <div class="container-card">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="front"><i class="fa fa-thermometer-quarter" aria-hidden="true"></i>
+                                <h3>Temp</h3>
+                            </div>
+                            <div class="back">informations</div>
                         </div>
                     </div>
-                </div>
-                <div class="card">
-                    <div class="card-content">
-                        <div class="front"><i class="fas fa-cloud-showers-heavy"></i>
-                            <h3>Rain</h3>
-                        </div>
-                        <div class="back">
-                            <p>informations</p>
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="front"><i class="fas fa-tint" aria-hidden="true"></i>
+                                <h3>Humidity</h3>
+                            </div>
+                            <div class="back">
+                                <p>informations</p>
+                            </div>
                         </div>
                     </div>
-                </div>
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="front"><i class="fas fa-cloud-showers-heavy"></i>
+                                <h3>Rain</h3>
+                            </div>
+                            <div class="back">
+                                <p>informations</p>
+                            </div>
+                        </div>
+                    </div>
 
-                <div class="card">
-                    <div class="card-content">
-                        <div class="front"><i class="fas fa-wind"></i>
-                            <h3>Wind</h3>
-                        </div>
-                        <div class="back">
-                            <p>informations</p>
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="front"><i class="fas fa-wind"></i>
+                                <h3>Wind</h3>
+                            </div>
+                            <div class="back">
+                                <p>informations</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="card">
-                    <div class="card-content">
-                        <div class="front"><i class="fa fa-tachometer" aria-hidden="true"></i>
-                            <h3>Pressure</h3>
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="front"><i class="fa fa-tachometer" aria-hidden="true"></i>
+                                <h3>Pressure</h3>
+                            </div>
+                            <div class="back">
+                                <p>informations</p>
+                            </div>
                         </div>
-                        <div class="back">
-                            <p>informations</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="front"><i class="fas fa-sun-o"></i>
+                                <h3>Solar</h3>
+                            </div>
+                            <div class="back">
+                                <p>informations</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="card">
-                    <div class="card-content">
-                        <div class="front"><i class="fas fa-sun-o"></i>
-                            <h3>Solar</h3>
-                        </div>
-                        <div class="back">
-                            <p>informations</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <br><br>
-            <!-- script for navbar  -->
-            <!-- code to show or hide hamburger menu icon -->
-            <script type="text/javascript">
-                $(document).ready(function() {
-                    $(".menu-icon").on("click", function() {
-                        $("nav ul").toggleClass("showing");
+                <br><br>
+                <!-- script for navbar  -->
+                <!-- code to show or hide hamburger menu icon -->
+                <script type="text/javascript">
+                    $(document).ready(function() {
+                        $(".menu-icon").on("click", function() {
+                            $("nav ul").toggleClass("showing");
+                        });
                     });
-                });
-                // code of scroll animation
-                $(window).on("scroll", function() {
-                    if ($(window).scrollTop()) {
-                        $('nav').addClass('black');
-                    } else {
-                        $('nav').removeClass('black');
-                    }
-                });
-            </script>
-            <!-- graph section -->
+                    // code of scroll animation
+                    $(window).on("scroll", function() {
+                        if ($(window).scrollTop()) {
+                            $('nav').addClass('black');
+                        } else {
+                            $('nav').removeClass('black');
+                        }
+                    });
+                </script>
+                <!-- graph section -->
 
-            <a name="graph"></a>
-            <p id="sub2">>> SENSORS ' GRAPHS
-                <<</p>
-                    <div class="graphs">
-                        <figure class="highcharts-figure">
-                            <div id="container1"></div>
-                        </figure>
-                        <figure class="highcharts-figure">
-                            <div id="container2"></div>
-                        </figure>
-                        <figure class="highcharts-figure">
-                            <div id="container3"></div>
-                        </figure>
-                        <figure class="highcharts-figure">
-                            <div id="container4"></div>
-                        </figure>
-                        <figure class="highcharts-figure">
-                            <div id="container5"></div>
-                        </figure>
-                        <figure class="highcharts-figure">
-                            <div id="container6"></div>
-                        </figure>
-                        <script src="chart.js"></script>
-                    </div>
-                    <!-- comment and footer section -->
-                    <footer>
-                        <div class="comment">
-                            <h2>Leave us a comment:</h2>
-                            <form>
-                                <textarea></textarea>
-                                <div class="btn">
-                                    <input type="submit" value="SUBMIT">
-                                </div>
-                            </form>
+                <a name="graph"></a>
+                <p id="sub2">>> SENSORS ' GRAPHS
+                    <<</p>
+                        <div class="graphs">
+                            <figure class="highcharts-figure">
+                                <div id="container1"></div>
+                            </figure>
+                            <figure class="highcharts-figure">
+                                <div id="container2"></div>
+                            </figure>
+                            <figure class="highcharts-figure">
+                                <div id="container3"></div>
+                            </figure>
+                            <figure class="highcharts-figure">
+                                <div id="container4"></div>
+                            </figure>
+                            <figure class="highcharts-figure">
+                                <div id="container5"></div>
+                            </figure>
+                            <figure class="highcharts-figure">
+                                <div id="container6"></div>
+                            </figure>
+                            <script src="chart.js"></script>
                         </div>
-                        <div class="middle">
-                            <a class="botn" href="#">
-                                <i class="fab fa-facebook-f"></i>
-                            </a>
-                            <a class="botn" href="#">
-                                <i class="fab fa-twitter"></i>
-                            </a>
-                            <a class="botn" href="#">
-                                <i class="fab fa-google"></i>
-                            </a>
-                            <a class="botn" href="#">
-                                <i class="fab fa-instagram"></i>
-                            </a>
+                        <!-- comment and footer section -->
+                        <footer>
+                            <div class="comment">
+                                <h2>Leave us a comment:</h2>
+                                <form>
+                                    <textarea></textarea>
+                                    <div>
+                                        <input type="submit" value="SUBMIT">
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="middle">
+                                <a class="botn" href="#">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a class="botn" href="#">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a class="botn" href="#">
+                                    <i class="fab fa-google"></i>
+                                </a>
+                                <a class="botn" href="#">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
 
-                        </div>
+                            </div>
 
-                    </footer>
-                    <!-- pop up modal section  -->
-                    <div class="bg-modal">
-                        <div class="modal-content">
-                            <div class="close"><a href="#">+</a></div>
-                            <div class="container" id="container">
-                                <div class="form-container sign-up-container">
-                                    <form action="#">
-                                        <h1>Create Account</h1>
-                                        <input type="text" placeholder="Name" />
-                                        <input type="email" placeholder="Email" />
-                                        <input type="password" placeholder="Password" />
-                                        <button>Sign Up</button>
-                                    </form>
-                                </div>
-                                <div class="form-container sign-in-container">
-                                    <form action="#">
-                                        <h1>Sign in</h1>
-                                        <input type="email" placeholder="Email" />
-                                        <input type="password" placeholder="Password" />
-                                        <button>Sign In</button>
-                                    </form>
-                                </div>
-                                <div class="overlay-container">
-                                    <div class="overlay">
-                                        <div class="overlay-panel overlay-left">
-                                            <h1>Welcome Back!</h1>
-                                            <p>To keep connected with us please login with your personal info</p>
-                                            <button class="ghost" id="signIn">Sign In</button>
-                                        </div>
-                                        <div class="overlay-panel overlay-right">
-                                            <h1>Hello, Friend!</h1>
-                                            <p>Enter your personal details and start journey with us</p>
-                                            <button class="ghost" id="signUp">Sign Up</button>
+                        </footer>
+                        <!-- pop up modal section  -->
+                        <div class="bg-modal">
+                            <div class="modal-content">
+                                <div class="close"><a href="#">+</a></div>
+                                <div class="container" id="container">
+                                    <div class="form-container sign-up-container">
+                                        <form action="#">
+                                            <h1>Create Account</h1>
+                                            <input type="text" placeholder="Name" />
+                                            <input type="email" placeholder="Email" />
+                                            <input type="password" placeholder="Password" />
+                                            <button>Sign Up</button>
+                                        </form>
+                                    </div>
+                                    <div class="form-container sign-in-container">
+                                        <form action="#">
+                                            <h1>Sign in</h1>
+                                            <input type="email" placeholder="Email" />
+                                            <input type="password" placeholder="Password" />
+                                            <button>Sign In</button>
+                                        </form>
+                                    </div>
+                                    <div class="overlay-container">
+                                        <div class="overlay">
+                                            <div class="overlay-panel overlay-left">
+                                                <h1>Welcome Back!</h1>
+                                                <p>To keep connected with us please login with your personal info</p>
+                                                <button class="ghost" id="signIn">Sign In</button>
+                                            </div>
+                                            <div class="overlay-panel overlay-right">
+                                                <h1>Hello, Friend!</h1>
+                                                <p>Enter your personal details and start journey with us</p>
+                                                <button class="ghost" id="signUp">Sign Up</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- pop up modal script -->
-                    <script type="text/javascript">
-                        document.getElementById('button1').addEventListener("click", function() {
-                            document.querySelector('.bg-modal').style.display = "flex";
-                        });
+                        <!-- pop up modal script -->
+                        <script type="text/javascript">
+                            document.getElementById('button1').addEventListener("click", function() {
+                                document.querySelector('.bg-modal').style.display = "flex";
+                            });
 
-                        document.querySelector('.close').addEventListener("click", function() {
-                            document.querySelector('.bg-modal').style.display = "none";
-                        });
-                    </script>
+                            document.querySelector('.close').addEventListener("click", function() {
+                                document.querySelector('.bg-modal').style.display = "none";
+                            });
+                        </script>
 
-                    <!-- form slide script -->
-                    <script src="login.js"></script>
-                    <script src="side.js"></script>
+                        <!-- form slide script -->
+                        <script src="login.js"></script>
+                        <script src="side.js"></script>
 
-                    <script type="text/javascript">
-                    function toggle(){
-                      var blur = document.getElementById('blur');
-                      blur.classList.toggle('active')
-                    }
+                        <script type="text/javascript">
+                            function toggle() {
+                                var blur = document.getElementById('blur');
+                                blur.classList.toggle('active')
+                            }
+                        </script>
+        </div>
 
-                    </script>
-                  </div>
-
-                    <!-- footer section-->
-</div>
+        <!-- footer section-->
+    </div>
 
 </body>
 
