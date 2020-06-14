@@ -32,7 +32,7 @@ header {
 
 #sub2 {
     padding-top: 2%;
-    padding-bottom: 0.3%;
+    padding-bottom: 0%;
     margin-left: 35%;
     color: rgb(255, 160, 16);
     font-size: 45px;
@@ -41,6 +41,7 @@ header {
     text-shadow: 2px 2px rgb(0, 0, 0);
     width: 450px;
     height: 60px;
+    text-decoration: none;
 }
 
 
@@ -725,7 +726,7 @@ footer {
     width: 80%;
 }
 
-h2 {
+.rightbox h2 {
     color: #777;
     font-family: "Roboto", sans-serif;
     text-transform: uppercase;
@@ -735,8 +736,8 @@ h2 {
     margin-top: 10px;
 }
 
-.input,
-p {
+.rightbox .input,
+.rightbox p {
     border: 0;
     border-bottom: 1px solid #3fb6a8;
     width: 80%;
@@ -773,7 +774,7 @@ span {
     margin-top: 25px;
 }
 
-h1 {
+.rightbox h1 {
     font-family: "Montserrat", sans-serif;
     color: #7ed386;
     font-size: 1.2rem;
@@ -834,4 +835,41 @@ label #sidebar_btn:hover {
 
 .sec#blur.active {
     filter: blur(5px);
+}
+
+
+/*graphs*/
+
+.graph {
+    background-color: rgba(167, 219, 25, 0);
+    width: 100%;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.graph div {
+    display: block;
+    margin: auto;
+    background-color: rgba(14, 14, 14, 0);
+    margin-bottom: 3%;
+    width: 90%;
+    border-radius: 5%;
+}
+
+
+
+
+
+
+button {
+    border-radius: 20px;
+    border: 1px solid rgba(91, 176, 255, 0.836);
+    background-color: rgba(91, 176, 255, 0.836);
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 12px 45px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: transform 80ms ease-in;
 }
