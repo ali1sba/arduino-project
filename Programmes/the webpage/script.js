@@ -1,3 +1,5 @@
+/////////////////////////////begin script.js////////////////////////////////////////////////
+
 function onClickMenu(){
 	document.getElementById("menu").classList.toggle("change");
 	document.getElementById("nav").classList.toggle("change");
@@ -142,3 +144,144 @@ var chartT = new Highcharts.Chart({
 	xhttp.send();
   }, 30000 ) ;
   
+
+  /////////////////////////////end script.js////////////////////////////////////////////////
+/*
+  /////////////////////////////begin side.js////////////////////////////////////////////////
+
+  const tabBtn = document.querySelectorAll(".tab");
+  const tab = document.querySelectorAll(".tabShow");
+  
+  function tabs(panelIndex) {
+	tab.forEach(function (node) {
+	  node.style.display = "none";
+	});
+	tab[panelIndex].style.display = "block";
+  }
+  
+  tabs(0);
+  
+  $(".tab").click(function () {
+	$(this).addClass("active").siblings().removeClass("active");
+  });
+  
+  /////////////////////////////end side.js////////////////////////////////////////////////
+
+  /////////////////////////////begin login.js////////////////////////////////////////////////
+  const signUpButton = document.getElementById('signUp');
+const signInButton = document.getElementById('signIn');
+const container = document.getElementById('container');
+
+signUpButton.addEventListener('click', () => {
+	container.classList.add("right-panel-active");
+});
+
+signInButton.addEventListener('click', () => {
+	container.classList.remove("right-panel-active");
+});
+
+
+
+firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+
+
+        document.getElementById("logout_butt").style.display = "inline";
+        document.getElementById("body1").style.display = "none";
+
+        var user = firebase.auth().currentUser;
+
+        if (user != null) {
+           
+            let email_id = user.email;
+           // document.getElementById("user_para").innerHTML = "Welcome User : " + email_id;
+		   window.alert("Welcome User : " + email_id);
+        }
+
+    } else {
+
+        
+        document.getElementById("logout_butt").style.display = "none";
+        //
+      //  document.getElementById("body1").style.display = "inline";
+
+    }
+});
+
+
+//sign up function
+
+
+function signUp() {
+
+    var user2Email = document.getElementById("email2_field").value;
+    var user2Pass = document.getElementById("password2_field").value;
+
+    firebase.auth().createUserWithEmailAndPassword(user2Email, user2Pass).catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+
+        window.alert("Error : " + errorMessage);
+
+        // ...
+    });
+
+
+}
+
+
+
+//sign up function
+
+
+function login() {
+
+    var userEmail = document.getElementById("email_field").value;
+    var userPass = document.getElementById("password_field").value;
+
+    firebase.auth().signInWithEmailAndPassword(userEmail, userPass).catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+
+        window.alert("Error : " + errorMessage);
+
+        // ...
+	});
+	
+	window.alert("hello" );
+}
+
+
+
+
+
+
+//sign up function
+
+
+function logout() {
+
+    
+            var user = firebase.auth().currentUser;
+            if (user != null) {
+               
+                let email_id = user.email;
+                alert("goodbye User : " + email_id);
+            }
+    
+    
+   
+    
+    
+    firebase.auth().signOut();
+   
+}
+  /////////////////////////////end login.js////////////////////////////////////////////////
+  */
+
+
+
+  
+

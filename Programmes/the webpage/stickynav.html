@@ -18,10 +18,31 @@
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+    
 
 </head>
 
 <body>
+    <!--firebase config script-->
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyDiOy4im_2tixIA_fNPtYBA9xhpk9aDgFw",
+            authDomain: "arduino-webserver-esisba.firebaseapp.com",
+            databaseURL: "https://arduino-webserver-esisba.firebaseio.com",
+            projectId: "arduino-webserver-esisba",
+            storageBucket: "arduino-webserver-esisba.appspot.com",
+            messagingSenderId: "256726388656",
+            appId: "1:256726388656:web:16edef465e20447aac1075",
+            measurementId: "G-MVDXMGPL6G"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        // firebase.analytics();
+    </script>
+     
+    
     <div class="wrapper">
         <header>
             <nav>
@@ -80,9 +101,13 @@
                             <label for="check">
                           <i class="fas fa-user-circle" id="sidebar_btn" onclick="toggle()"></i>
                       </label>
-                            <li><a  href="#" id="button1" class="button1">Sign In</a></li>
+                            <li><a  href="#" ><button onclick="logout()" id="logout_butt">Logout</button></a></li>
+                           
+                            <li><a  href="#" id="button1" class="button1"><button>Sign In</button></a></li>
                             <li><a href="#graph">Graphs</a></li>
                             <li><a href="#forcast">Forcasts</a></li>
+                            <li><a id="report" href="/final_work.html" >report</a></li>
+                            
                     </ul>
                 </div>
             </nav>
@@ -214,26 +239,11 @@
 
                 <a name="graph"></a>
                 <p id="sub2">>> SENSORS ' GRAPHS
-                    <<</p>
-                        <div class="graphs">
-                            <figure class="highcharts-figure">
-                                <div id="container1"></div>
-                            </figure>
-                            <figure class="highcharts-figure">
-                                <div id="container2"></div>
-                            </figure>
-                            <figure class="highcharts-figure">
-                                <div id="container3"></div>
-                            </figure>
-                            <figure class="highcharts-figure">
-                                <div id="container4"></div>
-                            </figure>
-                            <figure class="highcharts-figure">
-                                <div id="container5"></div>
-                            </figure>
-                            <figure class="highcharts-figure">
-                                <div id="container6"></div>
-                            </figure>
+                    </p>
+                        <div class="graph">
+                            <div id="chart-temperature"></div>
+                            <div id="chart-humidity"></div>
+                            <div id="chart-pressure"></div>
                             <script src="chart.js"></script>
                         </div>
                         <!-- comment and footer section -->
@@ -267,23 +277,24 @@
                         <!-- pop up modal section  -->
                         <div class="bg-modal">
                             <div class="modal-content">
-                                <div class="close"><a href="#">+</a></div>
+                                <div id="close"class="close"><a href="#">+</a></div>
                                 <div class="container" id="container">
                                     <div class="form-container sign-up-container">
                                         <form action="#">
                                             <h1>Create Account</h1>
-                                            <input type="text" placeholder="Name" />
-                                            <input type="email" placeholder="Email" />
-                                            <input type="password" placeholder="Password" />
-                                            <button>Sign Up</button>
+                                            <input type="text" placeholder="User Name" />
+                                            <input type="tel" placeholder="Phone Nember" />
+                                            <input type="email" placeholder="Email"id="email2_field" />
+                                            <input type="password" placeholder="Password" id="password2_field"/>
+                                            <button onclick="signUp()">Sign Up</button>
                                         </form>
                                     </div>
                                     <div class="form-container sign-in-container">
                                         <form action="#">
                                             <h1>Sign in</h1>
-                                            <input type="email" placeholder="Email" />
-                                            <input type="password" placeholder="Password" />
-                                            <button>Sign In</button>
+                                            <input type="email" placeholder="Email" id="email_field" />
+                                            <input type="password" placeholder="Password" id="password_field"  />
+                                            <button  onclick="login()">Sign In</button>
                                         </form>
                                     </div>
                                     <div class="overlay-container">
