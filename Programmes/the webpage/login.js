@@ -116,3 +116,78 @@ function logout() {
     firebase.auth().signOut();
    
 }
+// code for realtime sensor values
+setInterval(function ( ) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+        document.getElementById("whater_lavel").innerHTML = this.responseText;
+        }
+    };
+    xhttp.open("GET", "/whater_lavel", true);
+    xhttp.send();
+    }, 1000 ) ;
+
+    setInterval(function ( ) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+        document.getElementById("temperature").innerHTML = this.responseText;
+        }
+    };
+    xhttp.open("GET", "/temperature", true);
+    xhttp.send();
+    }, 1000 ) ;
+
+    setInterval(function ( ) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+        document.getElementById("temperatureF").innerHTML = this.responseText;
+        }
+    };
+    xhttp.open("GET", "/temperatureF", true);
+    xhttp.send();
+    }, 1000 ) ;
+
+    setInterval(function ( ) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+        document.getElementById("pressure").innerHTML = this.responseText;
+        }
+    };
+    xhttp.open("GET", "/pressure", true);
+    xhttp.send();
+    }, 1000 ) ;
+
+    setInterval(function ( ) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+        document.getElementById("humidity").innerHTML = this.responseText;
+        }
+    };
+    xhttp.open("GET", "/humidity", true);
+    xhttp.send();
+    }, 1000 ) ;
+
+    setInterval(function ( ) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+        document.getElementById("point_de_rose").innerHTML = this.responseText;
+        }
+    };
+    xhttp.open("GET", "/point_de_rose", true);
+    xhttp.send();
+    }, 1000 ) ;
+
+    setInterval(function ( ) {
+        var t = new Date();
+        document.getElementById("time").innerHTML = t.toLocaleTimeString();
+        var d = new Date();
+        const dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday","Saturday"];
+        const monthNames = ["January", "February", "March", "April", "May", "June","July", "August", "September", "October", "November", "December"];
+        document.getElementById("date").innerHTML = dayNames[d.getDay()] + ", " + d.getDate() + "-" + monthNames[d.getMonth()] + "-" + d.getFullYear();
+      },1000);
