@@ -121,15 +121,15 @@
                     <div class="cond-img">
                         <a><img src="sun.png" width="120px" height="120px"></a>
                     </div>
-                    <div class="temp"><a>29&#730;</a></div>
+                    <div class="temp"><a id="temperature">29&#730;</a></div>
                 </div>
                 <div class="cb2">
                     <div class="block1">
                         <div class="chor"><a><i class="fas fa-cloud-showers-heavy"></i> 100 &#37;</a></div>
-                        <div class="humid"><a><i class="fa fa-tint" aria-hidden="true"></i> 100 &#37;</a></div>
+                        <div class="humid"><a id="humidity"><i class="fa fa-tint" aria-hidden="true"></i> 100 &#37;</a></div>
                     </div>
                     <div class="block2">
-                        <div class="press"><a><i class="fa fa-tachometer" aria-hidden="true"></i> 1012 hPa</a> </div>
+                        <div class="press"><a id="pressure"><i class="fa fa-tachometer" aria-hidden="true"></i> 1012 hPa</a> </div>
                         <div class="wind"><a><i class="fas fa-wind"></i> 30 km/h</a> </div>
                     </div>
                 </div>
@@ -161,7 +161,7 @@
                             <div class="front"><i class="fa fa-thermometer-quarter" aria-hidden="true"></i>
                                 <h3>Temp</h3>
                             </div>
-                            <div class="back">informations</div>
+                            <div class="back"><a class="realinfo1"><p id="temperature">temp&#8451; </p><p id="temperatureF">temp&#8457;</p></a><a class="viewgraph" href="#"> View Graph</a></div>
                         </div>
                     </div>
                     <div class="card">
@@ -169,9 +169,8 @@
                             <div class="front"><i class="fas fa-tint" aria-hidden="true"></i>
                                 <h3>Humidity</h3>
                             </div>
-                            <div class="back">
-                                <p>informations</p>
-                            </div>
+                            <div class="back"><a class="realinfo" id="humidity">humid%</a>
+ 		                    <a class="viewgraph" href="#"> View Graph</a></div>
                         </div>
                     </div>
                     <div class="card">
@@ -179,9 +178,8 @@
                             <div class="front"><i class="fas fa-cloud-showers-heavy"></i>
                                 <h3>Rain</h3>
                             </div>
-                            <div class="back">
-                                <p>informations</p>
-                            </div>
+                            <div class="back"><a class="realinfo" id="??">rain%</a>
+ 		                    <a class="viewgraph" href="#"> View Graph</a></div>
                         </div>
                     </div>
 
@@ -190,9 +188,8 @@
                             <div class="front"><i class="fas fa-wind"></i>
                                 <h3>Wind</h3>
                             </div>
-                            <div class="back">
-                                <p>informations</p>
-                            </div>
+                            <div class="back"><a class="realinfo"id="??">wind km/h</a>
+ 		                    <a class="viewgraph" href="#"> View Graph</a></div>
                         </div>
                     </div>
                     <div class="card">
@@ -200,9 +197,8 @@
                             <div class="front"><i class="fa fa-tachometer" aria-hidden="true"></i>
                                 <h3>Pressure</h3>
                             </div>
-                            <div class="back">
-                                <p>informations</p>
-                            </div>
+                            <div class="back"><a class="realinfo" id="pressure">press hPa</a>
+ 		                    <a class="viewgraph" href="#"> View Graph</a></div>
                         </div>
                     </div>
                     <div class="card">
@@ -326,7 +322,7 @@
                         </script>
 
                         <!-- form slide script -->
-                        <script src="login.js"></script>
+                      <script src="login.js"></script>  <!--   js for realtime sensor values is included  -->
                         <script src="side.js"></script>
 
                         <script type="text/javascript">
