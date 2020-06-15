@@ -14,13 +14,16 @@ signInButton.addEventListener('click', () => {
 
 firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
-		
+
+		//window.alert("user = true + desplay begin " );
 		document.getElementById("button1").style.display = "none";
 		document.querySelector('.bg-modal').style.display = "none";
 		document.getElementById("logout_butt").style.display = "flex";
 		document.getElementById("sidebar_btn").style.display = "inline";
-		document.getElementById("report").style.display = "inline";
-		
+        document.getElementById("report").style.display = "inline";
+        document.querySelector('nav ul').style.display = "inline";
+        document.body.style.overflow = "auto";
+		//window.alert("user = true + desplay end" );
         
 
         var user = firebase.auth().currentUser;
@@ -33,12 +36,14 @@ firebase.auth().onAuthStateChanged(function(user) {
         }
 
     } else {
-		sidebar_btn
+		
         
 		document.getElementById("logout_butt").style.display = "none";
 		document.getElementById("sidebar_btn").style.display = "none";
 		document.getElementById("button1").style.display = "inline";
-		document.getElementById("report").style.display = "none";
+        document.getElementById("report").style.display = "none";
+        document.querySelector('nav ul').style.display = "inline";
+        document.body.style.overflow = "auto";
         //
       //  document.getElementById("body1").style.display = "inline";
 

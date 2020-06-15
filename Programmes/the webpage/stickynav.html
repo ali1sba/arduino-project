@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="stickynav.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Piedra&family=Raleway:wght@600&display=swap" rel="stylesheet">
     <script src="path/to/vanilla.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js">
@@ -19,7 +20,7 @@
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
-    
+
 
 </head>
 
@@ -41,8 +42,8 @@
         firebase.initializeApp(firebaseConfig);
         // firebase.analytics();
     </script>
-     
-    
+
+
     <div class="wrapper">
         <header>
             <nav>
@@ -74,16 +75,81 @@
 
                             <div class="settings tabShow">
                                 <h1>Account Settings</h1>
-                                <h2>Sync Watchlist to My Stuff</h2>
-                                <p></p>
-                                <h2>Hold Your Subscription</h2>
-                                <p></p>
-                                <h2>Cancel Your Subscription </h2>
-                                <p></p>
-                                <h2>Your Devices </h2>
-                                <p></p>
-                                <h2>Referrals</h2>
-                                <p></p>
+                                <p>TEMPERATURE </p>
+                                <div id="notif">
+
+                                    <div class="containernum">
+
+                                        <span class="prev" class="addsub"></span>
+                                        <span class="next" class="addsub"></span>
+                                        <div id="box">
+                                            <span> 
+                                            <input type="number"  value="0" min="1" max="5">
+                                        </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="containernum">
+
+                                        <span class="prev" class="addsub"></span>
+                                        <span class="next" class="addsub"></span>
+                                        <div id="box">
+                                            <span> 
+                                            <input type="number" value="0" min="1" max="5">
+                                        </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p>PRESSURE </p>
+                                <div id="notif">
+
+                                    <div class="containernum">
+
+                                        <span class="prev" class="addsub"></span>
+                                        <span class="next" class="addsub"></span>
+                                        <div id="box">
+                                            <span> 
+                                            <input type="number"  value="0" min="1" max="5">
+                                        </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="containernum">
+
+                                        <span class="prev" class="addsub"></span>
+                                        <span class="next" class="addsub"></span>
+                                        <div id="box">
+                                            <span> 
+                                            <input type="number" value="0" min="1" max="5">
+                                        </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p>HUMIDITY </p>
+                                <div id="notif">
+
+                                    <div class="containernum">
+
+                                        <span class="prev" class="addsub"></span>
+                                        <span class="next" class="addsub"></span>
+                                        <div id="box">
+                                            <span> 
+                                            <input type="number"  value="0" min="1" max="5">
+                                        </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="containernum">
+
+                                        <span class="prev" class="addsub"></span>
+                                        <span class="next" class="addsub"></span>
+                                        <div id="box">
+                                            <span> 
+                                            <input type="number" value="0" min="1" max="5">
+                                        </span>
+                                        </div>
+                                    </div>
+                                </div>
                                 <button class="btn-update btn">Update</button>
                             </div>
                         </div>
@@ -95,19 +161,18 @@
                 <div class="logo">
                     <img alt="logo" src="logo1.png" id="logoimg">
                 </div>
+                <label for="check">
+                    <i class="fas fa-user-circle" id="sidebar_btn" onclick="toggle()"></i>
+                   </label>
                 <div class="menu">
+
                     <ul>
-                        <li>
-                            <label for="check">
-                          <i class="fas fa-user-circle" id="sidebar_btn" onclick="toggle()"></i>
-                      </label>
-                            <li><a  href="#" ><button onclick="logout()" id="logout_butt">Logout</button></a></li>
-                           
-                            <li><a  href="#" id="button1" class="button1"><button>Sign In</button></a></li>
-                            <li><a href="#graph">Graphs</a></li>
-                            <li><a href="#forcast">Forcasts</a></li>
-                            <li><a id="report" href="/final_work.html" >report</a></li>
-                            
+                        <li><a href="#" id="button1" class="button1">Sign In</a></li>
+                        <li><a href="#"  id="logout_butt">Logout</a></li>
+                        <li><a href="#graph">Graphs</a></li>
+                        <li><a href="#forcast">Forcasts</a></li>
+                        <li><a  href="/final_work.html"id="report">Report</a></li>
+
                     </ul>
                 </div>
             </nav>
@@ -161,7 +226,11 @@
                             <div class="front"><i class="fa fa-thermometer-quarter" aria-hidden="true"></i>
                                 <h3>Temp</h3>
                             </div>
-                            <div class="back"><a class="realinfo1"><p id="temperature">temp&#8451; </p><p id="temperatureF">temp&#8457;</p></a><a class="viewgraph" href="#"> View Graph</a></div>
+                            <div class="back">
+                                <a class="realinfo1">
+                                    <p id="temperature">temp&#8451; </p>
+                                    <p id="temperatureF">temp&#8457;</p>
+                                </a><a class="viewgraph" href="#"> View Graph</a></div>
                         </div>
                     </div>
                     <div class="card">
@@ -170,7 +239,7 @@
                                 <h3>Humidity</h3>
                             </div>
                             <div class="back"><a class="realinfo" id="humidity">humid%</a>
- 		                    <a class="viewgraph" href="#"> View Graph</a></div>
+                                <a class="viewgraph" href="#"> View Graph</a></div>
                         </div>
                     </div>
                     <div class="card">
@@ -179,7 +248,7 @@
                                 <h3>Rain</h3>
                             </div>
                             <div class="back"><a class="realinfo" id="??">rain%</a>
- 		                    <a class="viewgraph" href="#"> View Graph</a></div>
+                                <a class="viewgraph" href="#"> View Graph</a></div>
                         </div>
                     </div>
 
@@ -188,8 +257,8 @@
                             <div class="front"><i class="fas fa-wind"></i>
                                 <h3>Wind</h3>
                             </div>
-                            <div class="back"><a class="realinfo"id="??">wind km/h</a>
- 		                    <a class="viewgraph" href="#"> View Graph</a></div>
+                            <div class="back"><a class="realinfo" id="??">wind km/h</a>
+                                <a class="viewgraph" href="#"> View Graph</a></div>
                         </div>
                     </div>
                     <div class="card">
@@ -198,7 +267,7 @@
                                 <h3>Pressure</h3>
                             </div>
                             <div class="back"><a class="realinfo" id="pressure">press hPa</a>
- 		                    <a class="viewgraph" href="#"> View Graph</a></div>
+                                <a class="viewgraph" href="#"> View Graph</a></div>
                         </div>
                     </div>
                     <div class="card">
@@ -235,106 +304,132 @@
 
                 <a name="graph"></a>
                 <p id="sub2">>> SENSORS ' GRAPHS
-                    </p>
-                        <div class="graph">
-                            <div id="chart-temperature"></div>
-                            <div id="chart-humidity"></div>
-                            <div id="chart-pressure"></div>
-                            <script src="chart.js"></script>
-                        </div>
-                        <!-- comment and footer section -->
-                        <footer>
-                            <div class="comment">
-                                <h2>Leave us a comment:</h2>
-                                <form>
-                                    <textarea></textarea>
-                                    <div>
-                                        <input type="submit" value="SUBMIT">
-                                    </div>
+                </p>
+                <div class="graph">
+                    <div id="chart-temperature"></div>
+                    <div id="chart-humidity"></div>
+                    <div id="chart-pressure"></div>
+                    <script src="chart.js"></script>
+                </div>
+                <!-- comment and footer section -->
+                <footer>
+                    <div class="comment">
+                        <h2>Leave us a comment:</h2>
+                        <form>
+                            <textarea></textarea>
+                            <div>
+                                <input type="submit" value="SUBMIT">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="middle">
+                        <a class="botn" href="#">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a class="botn" href="#">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a class="botn" href="#">
+                            <i class="fab fa-google"></i>
+                        </a>
+                        <a class="botn" href="#">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+
+                    </div>
+
+                </footer>
+                <!-- pop up modal section  -->
+                <div class="bg-modal">
+                    <div class="modal-content">
+                        <div id="close" class="close"><a href="#">+</a></div>
+                        <div class="container" id="container">
+                            <div class="form-container sign-up-container">
+                                <form action="#">
+                                    <h1>Create Account</h1>
+                                    <input type="text" placeholder="User Name" />
+                                    <input type="tel" placeholder="Phone Nember" />
+                                    <input type="email" placeholder="Email" id="email2_field" />
+                                    <input type="password" placeholder="Password" id="password2_field" />
+                                    <button onclick="signUp()">Sign Up</button>
                                 </form>
                             </div>
-                            <div class="middle">
-                                <a class="botn" href="#">
-                                    <i class="fab fa-facebook-f"></i>
-                                </a>
-                                <a class="botn" href="#">
-                                    <i class="fab fa-twitter"></i>
-                                </a>
-                                <a class="botn" href="#">
-                                    <i class="fab fa-google"></i>
-                                </a>
-                                <a class="botn" href="#">
-                                    <i class="fab fa-instagram"></i>
-                                </a>
-
+                            <div class="form-container sign-in-container">
+                                <form action="#">
+                                    <h1>Sign in</h1>
+                                    <input type="email" placeholder="Email" id="email_field" />
+                                    <input type="password" placeholder="Password" id="password_field" />
+                                    <button onclick="login()">Sign In</button>
+                                </form>
                             </div>
-
-                        </footer>
-                        <!-- pop up modal section  -->
-                        <div class="bg-modal">
-                            <div class="modal-content">
-                                <div id="close"class="close"><a href="#">+</a></div>
-                                <div class="container" id="container">
-                                    <div class="form-container sign-up-container">
-                                        <form action="#">
-                                            <h1>Create Account</h1>
-                                            <input type="text" placeholder="User Name" />
-                                            <input type="tel" placeholder="Phone Nember" />
-                                            <input type="email" placeholder="Email"id="email2_field" />
-                                            <input type="password" placeholder="Password" id="password2_field"/>
-                                            <button onclick="signUp()">Sign Up</button>
-                                        </form>
+                            <div class="overlay-container">
+                                <div class="overlay">
+                                    <div class="overlay-panel overlay-left">
+                                        <h1>Welcome Back!</h1>
+                                        <p>To keep connected with us please login with your personal info</p>
+                                        <button class="ghost" id="signIn">Sign In</button>
                                     </div>
-                                    <div class="form-container sign-in-container">
-                                        <form action="#">
-                                            <h1>Sign in</h1>
-                                            <input type="email" placeholder="Email" id="email_field" />
-                                            <input type="password" placeholder="Password" id="password_field"  />
-                                            <button  onclick="login()">Sign In</button>
-                                        </form>
-                                    </div>
-                                    <div class="overlay-container">
-                                        <div class="overlay">
-                                            <div class="overlay-panel overlay-left">
-                                                <h1>Welcome Back!</h1>
-                                                <p>To keep connected with us please login with your personal info</p>
-                                                <button class="ghost" id="signIn">Sign In</button>
-                                            </div>
-                                            <div class="overlay-panel overlay-right">
-                                                <h1>Hello, Friend!</h1>
-                                                <p>Enter your personal details and start journey with us</p>
-                                                <button class="ghost" id="signUp">Sign Up</button>
-                                            </div>
-                                        </div>
+                                    <div class="overlay-panel overlay-right">
+                                        <h1>Hello, Friend!</h1>
+                                        <p>Enter your personal details and start journey with us</p>
+                                        <button class="ghost" id="signUp">Sign Up</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <!-- pop up modal script -->
-                        <script type="text/javascript">
-                            document.getElementById('button1').addEventListener("click", function() {
-                                document.querySelector('.bg-modal').style.display = "flex";
-                            });
+                    </div>
+                </div>
+                <!-- pop up modal script -->
+                <script type="text/javascript">
+                    document.getElementById('button1').addEventListener("click", function() {
+                        document.querySelector('.bg-modal').style.display = "flex";
+                        document.body.style.overflow = "hidden";
+                        document.querySelector('nav ul').style.display = "none";
+                    });
 
-                            document.querySelector('.close').addEventListener("click", function() {
-                                document.querySelector('.bg-modal').style.display = "none";
-                            });
-                        </script>
+                    document.querySelector('.close').addEventListener("click", function() {
+                        document.querySelector('.bg-modal').style.display = "none";
+                        document.body.style.overflow = "auto";
+                        document.querySelector('nav ul').style.display = "inline";
+                    });
+                </script>
+                <!-- form slide script -->
+                <script src="login.js"></script>
+                <!--   js for realtime sensor values is included  -->
+                <script src="side.js"></script>
 
-                        <!-- form slide script -->
-                      <script src="login.js"></script>  <!--   js for realtime sensor values is included  -->
-                        <script src="side.js"></script>
-
-                        <script type="text/javascript">
-                            function toggle() {
-                                var blur = document.getElementById('blur');
-                                blur.classList.toggle('active')
-                            }
-                        </script>
+                <script type="text/javascript">
+                    function toggle() {
+                        var blur = document.getElementById('blur');
+                        blur.classList.toggle('active')
+                    }
+                </script>
         </div>
 
         <!-- footer section-->
     </div>
+
+
+    <script>
+        $('#logout_butt').click(function () { 
+
+    
+var user = firebase.auth().currentUser;
+if (user != null) {
+   
+    let email_id = user.email;
+    alert("goodbye User : " + email_id);
+}
+
+
+
+
+
+firebase.auth().signOut();
+
+ });
+
+    </script>
 
 </body>
 
